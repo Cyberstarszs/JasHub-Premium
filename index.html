@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JasHub - Follower TikTok & Instagram</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+         :root {
+            --primary: #2563eb;
+            --primary-light: #3b82f6;
+            --secondary: #f97316;
+            --secondary-light: #fb923c;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --light-gray: #e2e8f0;
+            --card-bg: #ffffff;
+            --text: #1e293b;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --success: #10b981;
+            --transition: all 0.3s ease;
+        }
+        
+        .dark-mode {
+            --light: #0f172a;
+            --dark: #f8fafc;
+            --gray: #94a3b8;
+            --light-gray: #334155;
+            --card-bg: #1e293b;
+            --text: #f1f5f9;
+            --shadow: rgba(0, 0, 0, 0.3);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: var(--light);
+            color: var(--text);
+            min-height: 100vh;
+            transition: var(--transition);
+            background-image: linear-gradient(135deg, rgba(37, 99, 235, 0.03) 0%, rgba(249, 115, 22, 0.03) 100%);
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* Header Styles */
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), #1d4ed8);
+            color: white;
+            padding: 1.2rem 0;
+            box-shadow: 0 4px 6px var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 1rem;
+        }
+        
+        .logo-img {
+            height: 70px;
+            width: 70px;
+            background: linear-gradient(45deg, #f97316, #f59e0b);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 800;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+            animation: pulse 2s infinite;
+            transition: var(--transition);
+        }
+        
+        .logo-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+        
+        @keyframes pulse {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+        
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        
+        .logo-text h1 {
+            font-size: 2.1rem;
+            font-weight: 800;
+            margin-bottom: 0.3rem;
+            letter-spacing: -1px;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .logo-text p {
+            font-size: 1rem;
+            opacity: 0.9;
+            text-align: left;
+            max-width: 300px;
+        }
+        
+        .service-variants {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 0.8rem;
+            max-width: 90%;
+        }
+        
+        .variant-tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+            cursor: default;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+        
+        .variant-tag:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+        }
+        
+        .variant-tag i {
+            font-size: 1rem;
+        }
+        /* Main Content */
+        
+        main {
+            padding: 2.5rem 0;
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border-radius: 18px;
+            box-shadow: 0 12px 30px var(--shadow);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: var(--transition);
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 18px 35px var(--shadow);
+        }
+        
+        .section-title {
+            font-size: 1.7rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .section-title i {
+            background: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            box-shadow: 0 4px 8px rgba(37, 99, 235, 0.3);
+        }
+        /* Form Styles */
+        
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group {
+            flex: 1;
+            min-width: 250px;
+            margin-bottom: 0;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.6rem;
+            font-weight: 500;
+            color: var(--text);
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid var(--light-gray);
+            border-radius: 14px;
+            font-size: 1rem;
+            background: var(--card-bg);
+            color: var(--text);
+            transition: var(--transition);
+            appearance: none;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+        }
+        
+        .select-wrapper {
+            position: relative;
+        }
+        
+        .select-wrapper::after {
+            content: "\f078";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            position: absolute;
+            top: 50%;
+            right: 18px;
+            transform: translateY(-50%);
+            pointer-events: none;
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        /* Pricing Display */
+        
+        .pricing-display {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border-radius: 14px;
+            padding: 1.5rem;
+            text-align: center;
+            margin: 1.5rem 0;
+            display: none;
+            animation: fadeIn 0.4s ease;
+            box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3);
+        }
+        
+        .pricing-display.active {
+            display: block;
+        }
+        
+        .price-label {
+            font-size: 1.05rem;
+            margin-bottom: 0.4rem;
+            opacity: 0.9;
+        }
+        
+        .price-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.6rem;
+            text-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+            letter-spacing: -1px;
+        }
+        /* Button Styles */
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 32px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 14px;
+            cursor: pointer;
+            transition: var(--transition);
+            text-decoration: none;
+            gap: 10px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            color: white;
+            box-shadow: 0 6px 12px rgba(249, 115, 22, 0.35);
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #ea580c, #f97316);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 18px rgba(249, 115, 22, 0.45);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+        
+        .btn-block {
+            width: 100%;
+        }
+        
+        .btn i {
+            transition: transform 0.3s ease;
+        }
+        
+        .btn:hover i {
+            transform: translateX(4px);
+        }
+        /* Service Grid */
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.8rem;
+        }
+        
+        .service-card {
+            background: var(--card-bg);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            animation: fadeIn 0.6s ease-out;
+            animation-fill-mode: backwards;
+            border: 1px solid var(--light-gray);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 25px var(--shadow);
+        }
+        
+        .service-header {
+            padding: 1.4rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+        }
+        
+        .service-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .service-platform {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .service-body {
+            padding: 1.4rem;
+            flex-grow: 1;
+        }
+        
+        .service-price {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.4rem;
+        }
+        
+        .service-price span {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--gray);
+        }
+        
+        .service-min {
+            font-size: 0.9rem;
+            color: var(--gray);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .package-list {
+            margin-top: 0.8rem;
+        }
+        
+        .package-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px dashed var(--light-gray);
+            font-size: 0.95rem;
+            transition: var(--transition);
+        }
+        
+        .package-item:hover {
+            background: rgba(37, 99, 235, 0.05);
+            border-radius: 6px;
+            padding: 8px 10px;
+        }
+        
+        .package-item:last-child {
+            border-bottom: none;
+        }
+        /* Footer */
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 2.2rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 650px;
+            margin: 0 auto;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 18px;
+            margin: 1.5rem 0;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+            transition: var(--transition);
+            padding: 8px 15px;
+            border-radius: 30px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            margin-top: 1.5rem;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        
+        .garansi-box {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 18px;
+            border-radius: 12px;
+            margin-top: 18px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .garansi-box a {
+            color: var(--secondary-light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+            display: inline-block;
+            margin-top: 8px;
+            word-break: break-all;
+        }
+        
+        .garansi-box a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+        /* Animations */
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        /* Responsive Design */
+        
+        @media (max-width: 900px) {
+            .services-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .logo-container {
+                flex-direction: column;
+                text-align: center;
+            }
+            .logo-text {
+                align-items: center;
+                text-align: center;
+            }
+            .logo-text h1 {
+                font-size: 1.9rem;
+            }
+            .logo-img {
+                height: 65px;
+                width: 65px;
+                font-size: 1.8rem;
+            }
+            .card {
+                padding: 1.8rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+            }
+            .price-value {
+                font-size: 2rem;
+            }
+            .services-grid {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin: 1.8rem auto 0;
+            }
+            .variant-tag {
+                padding: 7px 12px;
+                font-size: 0.85rem;
+            }
+            .form-row {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .form-control {
+                padding: 13px 16px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo-text h1 {
+                font-size: 1.7rem;
+            }
+            .logo-img {
+                height: 60px;
+                width: 60px;
+                font-size: 1.6rem;
+            }
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+            .variant-tag {
+                font-size: 0.8rem;
+                padding: 6px 10px;
+            }
+            .section-title {
+                font-size: 1.4rem;
+            }
+            .price-value {
+                font-size: 1.9rem;
+            }
+            .service-name {
+                font-size: 1.2rem;
+            }
+            .btn {
+                padding: 14px 24px;
+                font-size: 1rem;
+            }
+        }
+        /* Utility Classes */
+        
+        .hidden {
+            display: none;
+        }
+        
+        .form-group.hidden {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo-container">
+                    <img src="https://i.imgur.com/7BpqPHD.png" alt="Logo Vavian" class="logo-img" />
+                    <i class="fas fa-rocket"></i>
+                </div>
+                <div class="logo-text">
+                    <h1>JasHub</h1>
+                    <p>Follower & Like Amanah Termurah</p>
+                </div>
+            </div>
+
+            <div class="service-variants">
+                <div class="variant-tag">
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </div>
+                <div class="variant-tag">
+                    <i class="fab fa-tiktok"></i>
+                    <span>TikTok</span>
+                </div>
+                <div class="variant-tag">
+                    <i class="fas fa-thumbs-up"></i>
+                    <span>Likes</span>
+                </div>
+                <div class="variant-tag">
+                    <i class="fas fa-eye"></i>
+                    <span>Views</span>
+                </div>
+                <div class="variant-tag">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Aman & Terpercaya</span>
+                </div>
+            </div>
+        </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="card">
+            <h2 class="section-title"><i class="fas fa-shopping-cart"></i> Buat Pesanan</h2>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="platform"><i class="fas fa-mobile-alt"></i> Platform</label>
+                    <div class="select-wrapper">
+                        <select id="platform" class="form-control">
+                            <option value="">-- Pilih Platform --</option>
+                            <option value="Instagram">Instagram</option>
+                            <option value="Tiktok">TikTok</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="service"><i class="fas fa-concierge-bell"></i> Jenis Layanan</label>
+                    <div class="select-wrapper">
+                        <select id="service" class="form-control" disabled>
+                            <option value="">-- Pilih Layanan --</option>
+                            <option value="Followers">Followers</option>
+                            <option value="Likes">Likes</option>
+                            <option value="Views">Views</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="package"><i class="fas fa-box"></i> Pilih Paket</label>
+                <div class="select-wrapper">
+                    <select id="package" class="form-control" disabled>
+                        <option value="">-- Pilih Paket --</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group hidden" id="accountLinkGroup">
+                <label for="account-link"><i class="fas fa-link"></i> Link Akun Target</label>
+                <input type="text" id="account-link" class="form-control" placeholder="https://www.instagram.com/x.shybb/profilecard/?igsh=eWM0cGUwc2hycWR6">
+            </div>
+
+            <div class="form-group hidden" id="videoLinkGroup">
+                <label for="video-link"><i class="fas fa-video"></i> Link Video (Jika Likes/Views)</label>
+                <input type="text" id="video-link" class="form-control" placeholder="https://www.tiktok.com/@username/video/123456">
+            </div>
+
+            <div class="pricing-display" id="pricingDisplay">
+                <div class="price-label">Total Harga</div>
+                <div class="price-value" id="totalPrice">Rp0</div>
+                <p>Harga sudah termasuk biaya layanan</p>
+            </div>
+
+            <button id="orderBtn" class="btn btn-primary btn-block" disabled>
+                <i class="fab fa-whatsapp"></i> Pesan via WhatsApp
+            </button>
+        </div>
+
+        <div class="card">
+            <h2 class="section-title"><i class="fas fa-fire"></i> Daftar Layanan Populer</h2>
+            <div class="services-grid">
+                <!-- Instagram Followers -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-name">
+                            <i class="fab fa-instagram"></i> Instagram Followers
+                        </div>
+                        <div class="service-platform">
+                            <i class="fas fa-tag"></i> Follower
+                        </div>
+                    </div>
+                    <div class="service-body">
+                        <div class="service-price">Mulai Rp4.000</div>
+                        <div class="service-min"><i class="fas fa-shopping-cart"></i> Min. Pesan: 50 Followers</div>
+                        <div class="package-list">
+                            <div class="package-item"><span>50 Followers</span><span>Rp4.000</span></div>
+                            <div class="package-item"><span>100 Followers</span><span>Rp7.000</span></div>
+                            <div class="package-item"><span>200 Followers</span><span>Rp9.000</span></div>
+                            <div class="package-item"><span>300 Followers</span><span>Rp12.000</span></div>
+                            <div class="package-item"><span>500 Followers</span><span>Rp18.000</span></div>
+                            <div class="package-item"><span>1000 Followers</span><span>Rp33.000</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TikTok Followers -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-name">
+                            <i class="fab fa-tiktok"></i> TikTok Followers
+                        </div>
+                        <div class="service-platform">
+                            <i class="fas fa-tag"></i> Follower
+                        </div>
+                    </div>
+                    <div class="service-body">
+                        <div class="service-price">Mulai Rp8.000</div>
+                        <div class="service-min"><i class="fas fa-shopping-cart"></i> Min. Pesan: 100 Followers</div>
+                        <div class="package-list">
+                            <div class="package-item"><span>100 Followers</span><span>Rp8.000</span></div>
+                            <div class="package-item"><span>200 Followers</span><span>Rp12.000</span></div>
+                            <div class="package-item"><span>300 Followers</span><span>Rp17.000</span></div>
+                            <div class="package-item"><span>500 Followers</span><span>Rp26.000</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Instagram Likes -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-name">
+                            <i class="fab fa-instagram"></i> Instagram Likes
+                        </div>
+                        <div class="service-platform">
+                            <i class="fas fa-tag"></i> Likes
+                        </div>
+                    </div>
+                    <div class="service-body">
+                        <div class="service-price">Mulai Rp6.000</div>
+                        <div class="service-min"><i class="fas fa-shopping-cart"></i> Min. Pesan: 150 Likes</div>
+                        <div class="package-list">
+                            <div class="package-item"><span>150 Likes</span><span>Rp6.000</span></div>
+                            <div class="package-item"><span>300 Likes</span><span>Rp10.000</span></div>
+                            <div class="package-item"><span>500 Likes</span><span>Rp14.000</span></div>
+                            <div class="package-item"><span>1000 Likes</span><span>Rp24.000</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TikTok Likes -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-name">
+                            <i class="fab fa-tiktok"></i> TikTok Likes
+                        </div>
+                        <div class="service-platform">
+                            <i class="fas fa-tag"></i> Likes
+                        </div>
+                    </div>
+                    <div class="service-body">
+                        <div class="service-price">Mulai Rp6.000</div>
+                        <div class="service-min"><i class="fas fa-shopping-cart"></i> Min. Pesan: 150 Likes</div>
+                        <div class="package-list">
+                            <div class="package-item"><span>150 Likes</span><span>Rp6.000</span></div>
+                            <div class="package-item"><span>300 Likes</span><span>Rp10.000</span></div>
+                            <div class="package-item"><span>500 Likes</span><span>Rp14.000</span></div>
+                            <div class="package-item"><span>1000 Likes</span><span>Rp24.000</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Instagram & TikTok Views -->
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-name">
+                            <i class="fas fa-eye"></i> Instagram & TikTok Views
+                        </div>
+                        <div class="service-platform">
+                            <i class="fas fa-tag"></i> Views
+                        </div>
+                    </div>
+                    <div class="service-body">
+                        <div class="service-price">Mulai Rp7.000</div>
+                        <div class="service-min"><i class="fas fa-shopping-cart"></i> Min. Pesan: 15.000 Views</div>
+                        <div class="package-list">
+                            <div class="package-item"><span>15.000 Views</span><span>Rp7.000</span></div>
+                            <div class="package-item"><span>30.000 Views</span><span>Rp12.000</span></div>
+                            <div class="package-item"><span>50.000 Views</span><span>Rp16.000</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <h3>JasHub - Follower & Like Amanah Termurah</h3>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>+62 813-2491-9799</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>support@jashub.id</span>
+                    </div>
+                </div>
+                <p>Layanan pengikut, like, dan views untuk TikTok & Instagram dengan harga termurah dan proses amanah</p>
+
+                <div class="garansi-box">
+                    <i class="fas fa-shield-alt"></i> Grup Garansi & Layanan Lain:<br>
+                    <a href="https://chat.whatsapp.com/Js1OixDAAsUA8ZqHQvP84P" target="_blank">
+                        https://chat.whatsapp.com/Js1OixDAAsUA8ZqHQvP84P
+                    </a>
+                </div>
+
+                <div class="copyright">
+                    &copy; 2023 JasHub. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOM Elements
+        const platformSelect = document.getElementById('platform');
+        const serviceSelect = document.getElementById('service');
+        const packageSelect = document.getElementById('package');
+        const accountLinkGroup = document.getElementById('accountLinkGroup');
+        const videoLinkGroup = document.getElementById('videoLinkGroup');
+        const accountLinkInput = document.getElementById('account-link');
+        const videoLinkInput = document.getElementById('video-link');
+        const pricingDisplay = document.getElementById('pricingDisplay');
+        const totalPriceElement = document.getElementById('totalPrice');
+        const orderBtn = document.getElementById('orderBtn');
+
+        // WhatsApp configuration
+        const WHATSAPP_NUMBER = '6281324919799';
+
+        // Pricing data from the poster
+        const pricingData = {
+            'Instagram': {
+                'Followers': [{
+                    quantity: 50,
+                    price: 4000
+                }, {
+                    quantity: 100,
+                    price: 7000
+                }, {
+                    quantity: 200,
+                    price: 9000
+                }, {
+                    quantity: 300,
+                    price: 12000
+                }, {
+                    quantity: 400,
+                    price: 15000
+                }, {
+                    quantity: 500,
+                    price: 18000
+                }, {
+                    quantity: 600,
+                    price: 21000
+                }, {
+                    quantity: 700,
+                    price: 24000
+                }, {
+                    quantity: 800,
+                    price: 27000
+                }, {
+                    quantity: 900,
+                    price: 30000
+                }, {
+                    quantity: 1000,
+                    price: 33000
+                }, {
+                    quantity: 3000,
+                    price: 92000
+                }],
+                'Likes': [{
+                    quantity: 150,
+                    price: 6000
+                }, {
+                    quantity: 200,
+                    price: 8000
+                }, {
+                    quantity: 300,
+                    price: 10000
+                }, {
+                    quantity: 400,
+                    price: 12000
+                }, {
+                    quantity: 500,
+                    price: 14000
+                }, {
+                    quantity: 600,
+                    price: 16000
+                }, {
+                    quantity: 700,
+                    price: 18000
+                }, {
+                    quantity: 800,
+                    price: 20000
+                }, {
+                    quantity: 900,
+                    price: 22000
+                }, {
+                    quantity: 1000,
+                    price: 24000
+                }],
+                'Views': [{
+                    quantity: 15000,
+                    price: 7000
+                }, {
+                    quantity: 20000,
+                    price: 10000
+                }, {
+                    quantity: 30000,
+                    price: 12000
+                }, {
+                    quantity: 40000,
+                    price: 14000
+                }, {
+                    quantity: 50000,
+                    price: 16000
+                }]
+            },
+            'Tiktok': {
+                'Followers': [{
+                    quantity: 100,
+                    price: 8000
+                }, {
+                    quantity: 200,
+                    price: 12000
+                }, {
+                    quantity: 300,
+                    price: 17000
+                }, {
+                    quantity: 400,
+                    price: 21000
+                }, {
+                    quantity: 500,
+                    price: 26000
+                }, {
+                    quantity: 600,
+                    price: 30000
+                }, {
+                    quantity: 700,
+                    price: 35000
+                }],
+                'Likes': [{
+                    quantity: 150,
+                    price: 6000
+                }, {
+                    quantity: 200,
+                    price: 8000
+                }, {
+                    quantity: 300,
+                    price: 10000
+                }, {
+                    quantity: 400,
+                    price: 12000
+                }, {
+                    quantity: 500,
+                    price: 14000
+                }, {
+                    quantity: 600,
+                    price: 16000
+                }, {
+                    quantity: 700,
+                    price: 18000
+                }, {
+                    quantity: 800,
+                    price: 20000
+                }, {
+                    quantity: 900,
+                    price: 22000
+                }, {
+                    quantity: 1000,
+                    price: 24000
+                }],
+                'Views': [{
+                    quantity: 15000,
+                    price: 7000
+                }, {
+                    quantity: 20000,
+                    price: 10000
+                }, {
+                    quantity: 30000,
+                    price: 12000
+                }, {
+                    quantity: 40000,
+                    price: 14000
+                }, {
+                    quantity: 50000,
+                    price: 16000
+                }]
+            }
+        };
+
+        // Initialize the application
+        function initApp() {
+            setupEventListeners();
+            hideLinkInputs();
+        }
+
+        // Hide link inputs initially
+        function hideLinkInputs() {
+            accountLinkGroup.classList.add('hidden');
+            videoLinkGroup.classList.add('hidden');
+        }
+
+        // Setup event listeners
+        function setupEventListeners() {
+            // Platform selection
+            platformSelect.addEventListener('change', function() {
+                if (this.value) {
+                    serviceSelect.disabled = false;
+                    populateServiceOptions(this.value);
+                } else {
+                    serviceSelect.disabled = true;
+                    packageSelect.disabled = true;
+                    hideLinkInputs();
+                    orderBtn.disabled = true;
+                    pricingDisplay.classList.remove('active');
+                }
+
+                // Reset service and package
+                serviceSelect.value = '';
+                packageSelect.innerHTML = '<option value="">-- Pilih Paket --</option>';
+                packageSelect.disabled = true;
+                accountLinkInput.value = '';
+                videoLinkInput.value = '';
+            });
+
+            // Service selection
+            serviceSelect.addEventListener('change', function() {
+                if (this.value && platformSelect.value) {
+                    packageSelect.disabled = false;
+                    populatePackageOptions(platformSelect.value, this.value);
+                } else {
+                    packageSelect.disabled = true;
+                    packageSelect.innerHTML = '<option value="">-- Pilih Paket --</option>';
+                    hideLinkInputs();
+                    orderBtn.disabled = true;
+                    pricingDisplay.classList.remove('active');
+                }
+            });
+
+            // Package selection
+            packageSelect.addEventListener('change', function() {
+                if (this.value) {
+                    accountLinkGroup.classList.remove('hidden');
+
+                    // Show video link only for Likes/Views services
+                    if (serviceSelect.value === 'Likes' || serviceSelect.value === 'Views') {
+                        videoLinkGroup.classList.remove('hidden');
+                    } else {
+                        videoLinkGroup.classList.add('hidden');
+                        videoLinkInput.value = '';
+                    }
+
+                    calculateTotalPrice();
+                } else {
+                    hideLinkInputs();
+                    pricingDisplay.classList.remove('active');
+                    orderBtn.disabled = true;
+                }
+            });
+
+            // Order button
+            orderBtn.addEventListener('click', placeOrder);
+        }
+
+        // Populate service options based on platform
+        function populateServiceOptions(platform) {
+            // Clear existing options
+            serviceSelect.innerHTML = '<option value="">-- Pilih Layanan --</option>';
+
+            // Add new options
+            const services = Object.keys(pricingData[platform]);
+            services.forEach(service => {
+                const option = document.createElement('option');
+                option.value = service;
+                option.textContent = service;
+                serviceSelect.appendChild(option);
+            });
+        }
+
+        // Populate package options based on platform and service
+        function populatePackageOptions(platform, service) {
+            // Clear existing options
+            packageSelect.innerHTML = '<option value="">-- Pilih Paket --</option>';
+
+            // Get packages for this service
+            const packages = pricingData[platform][service];
+
+            // Add new options
+            packages.forEach(pkg => {
+                const option = document.createElement('option');
+                option.value = JSON.stringify(pkg);
+                option.textContent = `${pkg.quantity.toLocaleString('id-ID')} - Rp${pkg.price.toLocaleString('id-ID')}`;
+                packageSelect.appendChild(option);
+            });
+        }
+
+        // Calculate total price based on selected package
+        function calculateTotalPrice() {
+            if (!packageSelect.value) {
+                pricingDisplay.classList.remove('active');
+                orderBtn.disabled = true;
+                return;
+            }
+
+            const selectedPackage = JSON.parse(packageSelect.value);
+
+            // Display total price
+            totalPriceElement.textContent = `Rp${selectedPackage.price.toLocaleString('id-ID')}`;
+            pricingDisplay.classList.add('active');
+            orderBtn.disabled = false;
+        }
+
+        // Format Indonesian date
+        function formatIndonesianDate(date) {
+            const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+            const months = [
+                'Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni',
+                'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
+            ];
+
+            const dayName = days[date.getDay()];
+            const day = date.getDate();
+            const month = months[date.getMonth()];
+            const year = date.getFullYear();
+
+            return `${dayName}, ${day} ${month} ${year}`;
+        }
+
+        // Place order via WhatsApp
+        function placeOrder() {
+            if (!validateForm()) {
+                alert('Silakan lengkapi semua data pemesanan terlebih dahulu');
+                return;
+            }
+
+            const platform = platformSelect.options[platformSelect.selectedIndex].text;
+            const service = serviceSelect.options[serviceSelect.selectedIndex].text;
+            const selectedPackage = JSON.parse(packageSelect.value);
+            const accountLink = accountLinkInput.value;
+            const videoLink = videoLinkInput.value;
+            const currentDate = formatIndonesianDate(new Date());
+
+            // Format WhatsApp message
+            let message = `✅ *PENGISIAN DATA PESANAN*\n\n`;
+            message += `${currentDate}\n\n`;
+            message += `*Jenis Pesanan:* ${service} ${platform}\n`;
+            message += `*Jumlah:* ${selectedPackage.quantity.toLocaleString('id-ID')}\n`;
+            message += `*Total:* Rp${selectedPackage.price.toLocaleString('id-ID')}\n\n`;
+            message += `*Target Akun:*\n\n`;
+            message += `🔗: ${accountLink}\n`;
+
+            if (service === 'Likes' || service === 'Views') {
+                message += `📹: ${videoLink || 'Tidak diisi'}\n`;
+            }
+
+            message += `\n📣: Pastikan akun tidak private selama proses berlangsung\n\n`;
+            message += `*Grup Garansi & Layanan Lain:*\n`;
+            message += `https://chat.whatsapp.com/Js1OixDAAsUA8ZqHQvP84P\n\n`;
+            message += `Terima kasih telah menggunakan layanan kami!\n`;
+            message += `❓ Butuh bantuan atau kendala? Silakan hubungi admin via grup garansi.`;
+
+            // Encode message for URL
+            const encodedMessage = encodeURIComponent(message);
+
+            // Open WhatsApp
+            window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`, '_blank');
+        }
+
+        // Validate form
+        function validateForm() {
+            return (
+                platformSelect.value &&
+                serviceSelect.value &&
+                packageSelect.value &&
+                accountLinkInput.value
+            );
+        }
+
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
+</body>
+
+</html>
